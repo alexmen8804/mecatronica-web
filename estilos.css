@@ -5,6 +5,26 @@ body {
     margin: 0;
 }
 
+/* MENÚ */
+.menu {
+    background: #0a3d62;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+/* HEADER */
 header {
     background-color: #0a3d62;
     color: white;
@@ -15,6 +35,7 @@ h2 {
     margin-top: 30px;
 }
 
+/* GALERÍA */
 .galeria {
     display: flex;
     flex-wrap: wrap;
@@ -45,25 +66,27 @@ h2 {
     border-radius: 10px;
 }
 
+/* DOCUMENTOS */
 .docs {
-    list-style: none;
-    padding: 0;
-}
-
-.docs li {
-    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px;
 }
 
 .docs a {
     text-decoration: none;
     background: #0a3d62;
     color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
 .docs a:hover {
     background: #1e5f8a;
+    transform: scale(1.05);
 }
 
 /* FORMULARIO */
@@ -96,4 +119,16 @@ footer {
     background: #222;
     color: white;
     padding: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .galeria {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        flex-direction: column;
+    }
 }
