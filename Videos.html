@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Videos</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
 
+<body>
+
+<h1>🎬 Biblioteca de Videos</h1>
+
+<section id="contenedorVideos" class="pdf-container"></section>
+
+<script>
+const videos = [
+    "video1.mp4",
+    "video2.mp4",
+    "video3.mp4"
+];
+
+const contenedor = document.getElementById("contenedorVideos");
+
+videos.forEach(video => {
+    contenedor.innerHTML += `
+        <div class="pdf-card">
+            <h3>${video}</h3>
+
+            <video controls width="100%">
+                <source src="videos/${video}" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+
+            <a href="videos/${video}" download class="btn-descarga">
+                ⬇ Descargar Video
+            </a>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
