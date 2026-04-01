@@ -1,5 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mecatrónica Agroindustrial</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
 <body>
 
+<!-- MENÚ -->
 <nav class="menu">
     <a href="#inicio">Inicio</a>
     <a href="#galeria">Galería</a>
@@ -7,11 +16,13 @@
     <a href="#contacto">Contacto</a>
 </nav>
 
+<!-- ENCABEZADO -->
 <header id="inicio">
     <h1>Bienvenidos a Mecatrónica Agroindustrial</h1>
-    <p>Esta es la página web de la institución.</p>
+    <p>Innovación en robótica, automatización y agricultura</p>
 </header>
 
+<!-- GALERÍA -->
 <h2 id="galeria">Galería</h2>
 
 <div class="galeria">
@@ -27,7 +38,7 @@
   </div>
 
   <div class="card">
-    <h3>Mecánica</h3>
+    <h3>Mecánica CNC</h3>
     <img src="imagenes/mecanica.jpg">
   </div>
 
@@ -43,14 +54,27 @@
 
 </div>
 
+<!-- DOCUMENTOS -->
 <h2 id="documentos">Documentos</h2>
 
-<ul class="docs">
-    <li><a href="documentos/informe.docx" target="_blank">📄 Descargar informe</a></li>
-    <li><a href="documentos/datos.xlsx" target="_blank">📊 Ver datos Excel</a></li>
-    <li><a href="documentos/manual.pdf" target="_blank">📘 Manual PDF</a></li>
-</ul>
+<div class="docs">
 
+    <a href="documentos/informe.docx" target="_blank">📄 Descargar informe</a>
+
+    <a href="documentos/datos.xlsx" target="_blank">📊 Ver datos Excel</a>
+
+    <a href="documentos/manual.pdf" target="_blank">📘 Ver Manual PDF</a>
+
+    <a href="documentos/presentacion.pptx" target="_blank">📊 Ver Presentación</a>
+
+</div>
+
+<!-- VISOR PDF -->
+<h2>Vista del Manual</h2>
+
+<iframe src="documentos/manual.pdf" width="80%" height="500px"></iframe>
+
+<!-- CONTACTO -->
 <h2 id="contacto">Contacto</h2>
 
 <form class="formulario">
@@ -59,12 +83,11 @@
     <textarea placeholder="Mensaje" required></textarea>
     <button type="submit">Enviar</button>
 </form>
-    <h2>Manual PDF</h2>
 
-<iframe src="documentos/Manual.pdf" width="80%" height="500px"></iframe>
-
+<!-- PIE DE PÁGINA -->
 <footer>
     <p>© 2026 Institución Educativa</p>
 </footer>
 
 </body>
+</html>
