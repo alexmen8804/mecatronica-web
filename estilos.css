@@ -89,6 +89,44 @@ h2 {
     transform: scale(1.05);
 }
 
+/* PDFS */
+.pdf-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.pdf-card {
+    width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.pdf-card:hover {
+    transform: scale(1.03);
+}
+
+.btn-descarga {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-descarga:hover {
+    background: darkgreen;
+}
+
 /* FORMULARIO */
 .formulario {
     display: flex;
@@ -131,32 +169,9 @@ footer {
     .menu {
         flex-direction: column;
     }
+
     .pdf-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.pdf-card {
-    width: 300px;
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.btn-descarga {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 12px;
-    background: green;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.btn-descarga:hover {
-    background: darkgreen;
-}
+        flex-direction: column;
+        align-items: center;
+    }
 }
