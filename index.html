@@ -1,15 +1,18 @@
 <body>
+
 <nav class="menu">
     <a href="#inicio">Inicio</a>
     <a href="#galeria">Galería</a>
     <a href="#documentos">Documentos</a>
     <a href="#contacto">Contacto</a>
 </nav>
-  
-<h1>Bienvenidos a Mecatrónica Agroindustrial</h1>
-<p>Esta es la página web de la institución.</p>
 
-<h2>Galería</h2>
+<header id="inicio">
+    <h1>Bienvenidos a Mecatrónica Agroindustrial</h1>
+    <p>Esta es la página web de la institución.</p>
+</header>
+
+<h2 id="galeria">Galería</h2>
 
 <div class="galeria">
 
@@ -40,12 +43,25 @@
 
 </div>
 
-<h2>Documentos</h2>
+<h2 id="documentos">Documentos</h2>
 
 <ul class="docs">
     <li><a href="documentos/informe.docx" target="_blank">📄 Descargar informe</a></li>
     <li><a href="documentos/datos.xlsx" target="_blank">📊 Ver datos Excel</a></li>
     <li><a href="documentos/manual.pdf" target="_blank">📘 Manual PDF</a></li>
 </ul>
+
+<h2 id="contacto">Contacto</h2>
+
+<form class="formulario">
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo" required>
+    <textarea placeholder="Mensaje" required></textarea>
+    <button type="submit">Enviar</button>
+</form>
+
+<footer>
+    <p>© 2026 Institución Educativa</p>
+</footer>
 
 </body>
