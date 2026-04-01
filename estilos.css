@@ -131,4 +131,10 @@ footer {
     .menu {
         flex-direction: column;
     }
+    <script>
+function cambiarPDF() {
+    document.getElementById("visorPDF").src = "Documentos/Manual.pdf";
 }
+</script>
+}
+
