@@ -66,6 +66,31 @@ h2 {
     background: #1e5f8a;
 }
 
+/* FORMULARIO */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+    gap: 10px;
+}
+
+.formulario input,
+.formulario textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.formulario button {
+    background: #0a3d62;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* FOOTER */
 footer {
     margin-top: 30px;
     background: #222;
