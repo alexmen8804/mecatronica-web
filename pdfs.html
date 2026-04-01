@@ -19,16 +19,13 @@ const archivosPDF = [
     "Manual3.pdf"
 ];
 
-// GENERAR AUTOMÁTICAMENTE
 const contenedor = document.getElementById("contenedorPDF");
 
 archivosPDF.forEach(pdf => {
     contenedor.innerHTML += `
         <div class="pdf-card">
             <h3>${pdf}</h3>
-
             <iframe src="Documentos/${pdf}" width="100%" height="300px"></iframe>
-
             <a href="Documentos/${pdf}" download class="btn-descarga">
                 ⬇ Descargar PDF
             </a>
