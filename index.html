@@ -63,7 +63,7 @@
 
     <a href="documentos/datos.xlsx" target="_blank">📊 Ver datos Excel</a>
 
-    <a href="#" onclick="cambiarPDF()" class="docs">📘 Ver Manual PDF</a>
+    <a href="#" onclick="cambiarPDF()">📘 Ver Manual PDF</a>
 
     <a href="documentos/presentacion.pptx" target="_blank">📊 Ver Presentación</a>
 
@@ -86,8 +86,16 @@
 
 <!-- PIE DE PÁGINA -->
 <footer>
-    <p>© 2026 Institución Educativa</p>
+    <p>© 2026 Institución Educativa - Mecatrónica Agroindustrial</p>
 </footer>
+
+<!-- SCRIPT -->
+<script>
+function cambiarPDF() {
+    document.getElementById("visorPDF").src = "Documentos/Manual.pdf";
+}
+</script>
 
 </body>
 </html>
+
