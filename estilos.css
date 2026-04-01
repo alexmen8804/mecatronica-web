@@ -29,10 +29,12 @@ header {
 
 /* GALERÍA */
 .galeria {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
     gap: 25px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
 }
 
 .card {
