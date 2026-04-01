@@ -8,7 +8,6 @@
 
 <body>
 
-<!-- MENÚ -->
 <nav class="menu">
     <a href="#inicio">Inicio</a>
     <a href="#galeria">Galería</a>
@@ -16,17 +15,14 @@
     <a href="#contacto">Contacto</a>
 </nav>
 
-<!-- ENCABEZADO -->
 <header id="inicio">
     <h1>Bienvenidos a Mecatrónica Agroindustrial</h1>
     <p>Innovación en robótica, automatización y agricultura</p>
 </header>
 
-<!-- GALERÍA -->
 <h2 id="galeria">Galería</h2>
 
 <div class="galeria">
-
   <div class="card">
     <h3>Robótica</h3>
     <img src="imagenes/robotica.jpg">
@@ -51,53 +47,29 @@
     <h3>Electricidad</h3>
     <img src="imagenes/electricidad.jpg">
   </div>
-
 </div>
 
-<!-- DOCUMENTOS -->
 <h2 id="Documentos">Documentos</h2>
 
 <div class="docs">
-
     <a href="Documentos/informe.docx" target="_blank">📄 Descargar informe</a>
-
     <a href="Documentos/datos.xlsx" target="_blank">📊 Ver datos Excel</a>
-
     <a href="pdfs.html" target="_blank">📘 Ver Manuales PDF</a>
-
     <a href="Documentos/presentacion.pptx" target="_blank">📊 Ver Presentación</a>
-
 </div>
 
-<!-- VISOR PDF (VACÍO AL INICIO) -->
-<h2>Vista del Manual</h2>
-
-<iframe id="visorPDF" src="" width="80%" height="500px"></iframe>
-
-<!-- CONTACTO -->
 <h2 id="contacto">Contacto</h2>
 
 <form class="formulario">
     <input type="text" placeholder="Nombre" required>
     <input type="email" placeholder="Correo" required>
-    <textarea placeholder="Mensaje" required>
-    </textarea>
+    <textarea placeholder="Mensaje" required></textarea>
     <button type="submit">Enviar</button>
 </form>
 
-<!-- PIE DE PÁGINA -->
 <footer>
     <p>© 2026 Institución Educativa - Mecatrónica Agroindustrial</p>
 </footer>
 
-<!-- SCRIPT -->
-<script>
-function cambiarPDF() {
-    document.getElementById("visorPDF").src = "Documentos/Manual.pdf";
-    document.getElementById("visorPDF").scrollIntoView({ behavior: "smooth" });
-}
-</script>
-
 </body>
 </html>
-
