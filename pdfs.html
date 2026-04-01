@@ -10,41 +10,32 @@
 
 <h1>📘 Biblioteca de Manuales</h1>
 
-<section class="pdf-container">
+<section id="contenedorPDF" class="pdf-container"></section>
 
-    <div class="pdf-card">
-        <h3>Manual de Robótica</h3>
+<script>
+const archivosPDF = [
+    "Manual1.pdf",
+    "Manual2.pdf",
+    "Manual3.pdf"
+];
 
-        <!-- VISOR -->
-        <iframe src="Documentos/Manual1.pdf" width="100%" height="300px"></iframe>
+// GENERAR AUTOMÁTICAMENTE
+const contenedor = document.getElementById("contenedorPDF");
 
-        <!-- DESCARGA -->
-        <a href="Documentos/Manual1.pdf" download class="btn-descarga">
-            ⬇ Descargar PDF
-        </a>
-    </div>
+archivosPDF.forEach(pdf => {
+    contenedor.innerHTML += `
+        <div class="pdf-card">
+            <h3>${pdf}</h3>
 
-    <div class="pdf-card">
-        <h3>Manual de Electrónica</h3>
+            <iframe src="Documentos/${pdf}" width="100%" height="300px"></iframe>
 
-        <iframe src="Documentos/Manual2.pdf" width="100%" height="300px"></iframe>
-
-        <a href="Documentos/Manual2.pdf" download class="btn-descarga">
-            ⬇ Descargar PDF
-        </a>
-    </div>
-
-    <div class="pdf-card">
-        <h3>Manual de Automatización</h3>
-
-        <iframe src="Documentos/Manual3.pdf" width="100%" height="300px"></iframe>
-
-        <a href="Documentos/Manual3.pdf" download class="btn-descarga">
-            ⬇ Descargar PDF
-        </a>
-    </div>
-
-</section>
+            <a href="Documentos/${pdf}" download class="btn-descarga">
+                ⬇ Descargar PDF
+            </a>
+        </div>
+    `;
+});
+</script>
 
 </body>
 </html>
