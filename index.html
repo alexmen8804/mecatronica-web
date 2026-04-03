@@ -118,11 +118,11 @@
   const usuarioTexto = document.getElementById("usuario-logueado");
 
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      usuarioTexto.innerHTML = "👤 " + user.email;
-    } else {
-      window.location.href = "login.html";
-    }
+   if (user) {
+  usuarioTexto.innerHTML = "👤 " + user.email;
+} else {
+  usuarioTexto.innerHTML = "Invitado";
+}
   });
 
   window.logout = function(){
