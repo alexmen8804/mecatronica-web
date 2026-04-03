@@ -17,7 +17,8 @@
     <a href="#documentos">Documentos</a>
     <a href="#contacto">Contacto</a>
 
-    <span id="usuario-logueado" style="color:white;"></span>
+    <span id="usuario-logueado" style="color:white; margin-left:20px;"></span>
+    <a href="#" onclick="logout()">Salir</a>
 </nav>
 
 <!-- HEADER -->
@@ -30,7 +31,7 @@
     </div>
 </header>
 
-<!-- 🔥 PERFIL PROFESIONAL -->
+<!-- PERFIL -->
 <section class="perfil" id="perfil">
     <img src="imagenes/tu-foto.jpg" alt="Mi foto" class="foto-perfil">
 
@@ -49,27 +50,27 @@
 <div class="galeria">
   <div class="card">
     <h3>Robótica</h3>
-    <img src="imagenes/robotica.jpg" alt="Robótica">
+    <img src="imagenes/robotica.jpg">
   </div>
 
   <div class="card">
     <h3>Automatización</h3>
-    <img src="imagenes/automatizacion.jpg" alt="Automatización">
+    <img src="imagenes/automatizacion.jpg">
   </div>
 
   <div class="card">
     <h3>Mecánica CNC</h3>
-    <img src="imagenes/mecanica.jpg" alt="Mecánica CNC">
+    <img src="imagenes/mecanica.jpg">
   </div>
 
   <div class="card">
     <h3>Electrónica</h3>
-    <img src="imagenes/electronica.jpg" alt="Electrónica">
+    <img src="imagenes/electronica.jpg">
   </div>
 
   <div class="card">
     <h3>Electricidad</h3>
-    <img src="imagenes/electricidad.jpg" alt="Electricidad">
+    <img src="imagenes/electricidad.jpg">
   </div>
 </div>
 
@@ -77,12 +78,12 @@
 <h2 id="documentos">Documentos</h2>
 
 <div class="docs">
-    <a href="Documentos/informe.docx" target="_blank">📄 Descargar informe</a>
-    <a href="Documentos/datos.xlsx" target="_blank">📊 Ver datos Excel</a>
-    <a href="pdfs.html" target="_blank">📘 Ver Manuales PDF</a>
-    <a href="Documentos/presentacion.pptx" target="_blank">📊 Ver Presentación</a>
+    <a href="Documentos/informe.docx">📄 Descargar informe</a>
+    <a href="Documentos/datos.xlsx">📊 Ver datos Excel</a>
+    <a href="pdfs.html">📘 Ver Manuales PDF</a>
+    <a href="Documentos/presentacion.pptx">📊 Ver Presentación</a>
     
-    <a href="videos.html" class="btn-videos" target="_blank">🎬 Ver Videos</a>
+    <a href="videos.html" class="btn-videos">🎬 Ver Videos</a>
 </div>
 
 <!-- CONTACTO -->
@@ -99,9 +100,11 @@
 <footer>
     <p>© 2026 Institución Educativa - Mecatrónica Agroindustrial JUAN JACOBO ROUSSEAU</p>
 </footer>
+
+<!-- 🔐 FIREBASE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
@@ -112,11 +115,22 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  const usuarioTexto = document.getElementById("usuario-logueado");
+
   onAuthStateChanged(auth, (user) => {
-    if (!user) {
+    if (user) {
+      usuarioTexto.innerHTML = "👤 " + user.email;
+    } else {
       window.location.href = "login.html";
     }
   });
+
+  window.logout = function(){
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  }
 </script>
+
 </body>
 </html>
