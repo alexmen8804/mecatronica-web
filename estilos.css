@@ -35,9 +35,9 @@ header {
 /* LOGO ARRIBA IZQUIERDA */
 .logo {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 80px;
+    top: 40px;
+    left: 40px;
+    width: 110px;
     height: auto;
 }
 
