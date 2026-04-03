@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Registro</title>
+</head>
 
+<body>
+
+<h2>Registro</h2>
+
+<input type="email" id="correo" placeholder="Correo"><br><br>
+<input type="password" id="password" placeholder="Contraseña"><br><br>
+
+<button onclick="registrar()">Crear cuenta</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+  authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.registrar = function(){
+  let correo = document.getElementById("correo").value;
+  let pass = document.getElementById("password").value;
+
+  createUserWithEmailAndPassword(auth, correo, pass)
+    .then(() => {
+      alert("Usuario creado");
+      window.location.href = "login.html";
+    })
+    .catch(() => {
+      alert("Error al registrar");
+    });
+}
+</script>
+
+</body>
+</html>
