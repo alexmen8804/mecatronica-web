@@ -18,7 +18,7 @@
     <a href="#contacto">Contacto</a>
 
     <span id="usuario-logueado" style="color:white; margin-left:20px;"></span>
-    <a href="#" onclick="logout()">Salir</a>
+    <span id="btn-auth"></span>
 </nav>
 
 <!-- HEADER -->
@@ -116,13 +116,16 @@
   const auth = getAuth(app);
 
   const usuarioTexto = document.getElementById("usuario-logueado");
+  const btnAuth = document.getElementById("btn-auth");
 
   onAuthStateChanged(auth, (user) => {
-   if (user) {
-  usuarioTexto.innerHTML = "👤 " + user.email;
-} else {
-  usuarioTexto.innerHTML = "Invitado";
-}
+    if (user) {
+      usuarioTexto.innerHTML = "👤 " + user.email;
+      btnAuth.innerHTML = '<a href="#" onclick="logout()">Salir</a>';
+    } else {
+      usuarioTexto.innerHTML = "Invitado";
+      btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
+    }
   });
 
   window.logout = function(){
