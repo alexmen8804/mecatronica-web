@@ -1,25 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<div class="perfil">
+  <h2>Iniciar Sesión</h2>
+
+  <input type="email" id="correo" placeholder="Correo"><br><br>
+  <input type="password" id="password" placeholder="Contraseña"><br><br>
+
+  <button onclick="login()">Ingresar</button>
+  <button onclick="registro()">Registrarse</button>
+
+  <p id="mensaje"></p>
+</div>
+
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
-  authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+    authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+    projectId: "mecatronica-agroindustrial-jjr",
+  };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-window.login = function(){
-  let correo = document.getElementById("correo").value;
-  let pass = document.getElementById("password").value;
+  window.login = function(){
+    const email = document.getElementById("correo").value;
+    const password = document.getElementById("password").value;
 
-  signInWithEmailAndPassword(auth, correo, pass)
-    .then(() => {
-      window.location.href = "index.html";
-    })
-    .catch(() => {
-      alert("Datos incorrectos");
-    });
-}
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        window.location.href = "index.html";
+      })
+      .catch((error) => {
+        document.getElementById("mensaje").innerText = error.message;
+      });
+  }
+
+  window.registro = function(){
+    const email = document.getElementById("correo").value;
+    const password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        document.getElementById("mensaje").innerText = "Usuario creado ✅";
+      })
+      .catch((error) => {
+        document.getElementById("mensaje").innerText = error.message;
+      });
+  }
 </script>
+
+</body>
+</html>
