@@ -17,7 +17,7 @@
     <a href="#documentos">Documentos</a>
     <a href="#contacto">Contacto</a>
 
-    <span id="usuario-logueado" style="color:white; margin-left:20px;"></span>
+    <span id="usuario-logueado"></span>
     <span id="btn-auth"></span>
 </nav>
 
@@ -33,7 +33,7 @@
 
 <!-- PERFIL -->
 <section class="perfil" id="perfil">
-    <img src="imagenes/tu-foto.jpg" alt="Mi foto" class="foto-perfil">
+    <img src="imagenes/tu-foto.jpg" class="foto-perfil">
 
     <h2>ALEXANDER MENA ARDILA</h2>
 
@@ -82,7 +82,6 @@
     <a href="Documentos/datos.xlsx">📊 Ver datos Excel</a>
     <a href="pdfs.html">📘 Ver Manuales PDF</a>
     <a href="Documentos/presentacion.pptx">📊 Ver Presentación</a>
-    
     <a href="videos.html" class="btn-videos">🎬 Ver Videos</a>
 </div>
 
@@ -130,7 +129,7 @@
 
   window.logout = function(){
     signOut(auth).then(() => {
-      window.location.href = "login.html";
+      location.reload(); // 🔥 mejora: refresca sin error
     });
   }
 </script>
