@@ -131,7 +131,32 @@ h2 {
     gap: 15px;
     margin: 20px;
 }
+/* PERFIL */
+.perfil {
+    text-align: center;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
 
+.foto-perfil {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.perfil h2 {
+    margin-top: 15px;
+}
+
+.titulos {
+    font-size: 16px;
+    color: #555;
+}
 .docs a {
     text-decoration: none;
     background: #0a3d62;
