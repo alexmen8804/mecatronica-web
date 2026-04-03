@@ -97,6 +97,24 @@
 <footer>
     <p>© 2026 Institución Educativa - Mecatrónica Agroindustrial JUAN JACOBO ROUSSEAU</p>
 </footer>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+    authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+    projectId: "mecatronica-agroindustrial-jjr",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  });
+</script>
 </body>
 </html>
