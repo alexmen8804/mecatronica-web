@@ -24,13 +24,29 @@ body {
     text-decoration: underline;
 }
 
-/* HEADER */
+/* HEADER CON LOGO */
 header {
     background-color: #0a3d62;
     color: white;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
 }
 
+/* LOGO */
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+/* TEXTO DEL HEADER */
+.titulo {
+    text-align: left;
+}
+
+/* TÍTULOS */
 h2 {
     margin-top: 30px;
 }
@@ -181,22 +197,13 @@ footer {
     .menu {
         flex-direction: column;
     }
-    .header {
-    background: #0a3d62;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 15px;
-}
 
-.logo {
-    width: 80px;   /* ajusta el tamaño */
-    height: auto;
-    margin-right: 15px;
-}
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
 
-.titulo {
-    text-align: left;
+    .titulo {
+        text-align: center;
+    }
 }
-}
-
