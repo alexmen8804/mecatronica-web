@@ -7,26 +7,44 @@
     <link rel="stylesheet" href="estilos.css">
 
     <!-- 🔒 PROTECCIÓN FIREBASE -->
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
-    authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
-    projectId: "mecatronica-agroindustrial-jjr",
-  };
+      const firebaseConfig = {
+        apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+        authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+        projectId: "mecatronica-agroindustrial-jjr",
+      };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
 
-  onAuthStateChanged(auth, (user) => {
-    if (!user || !user.emailVerified) {
-      alert("🔒 Debes iniciar sesión y verificar tu correo");
-      window.location.href = "login.html";
-    }
-  });
-</script>
+      onAuthStateChanged(auth, (user) => {
+        if (!user || !user.emailVerified) {
+          alert("🔒 Debes iniciar sesión y verificar tu correo");
+          window.location.href = "login.html";
+        } else {
+          document.body.style.display = "block";
+
+          // 👤 Mostrar usuario
+          document.getElementById("usuario").innerText =
+            "👤 " + user.email;
+        }
+      });
+    </script>
+
+    <!-- ⚡ Evitar parpadeo -->
+    <style>
+        body {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,6 +56,9 @@
     <a href="index.html#documentos">Documentos</a>
     <a href="index.html#contacto">Contacto</a>
 </nav>
+
+<!-- 👤 USUARIO -->
+<p id="usuario" style="margin-top:10px;"></p>
 
 <!-- TÍTULO -->
 <h1 class="titulo-pagina">🎬 Videos Educativos</h1>
