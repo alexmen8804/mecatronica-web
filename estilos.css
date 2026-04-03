@@ -24,6 +24,7 @@ html {
     position: sticky;
     top: 0;
     z-index: 1000;
+    flex-wrap: wrap;
 }
 
 .menu a {
@@ -37,22 +38,37 @@ html {
     color: #f6b93b;
 }
 
-/* USUARIO (DERECHA) */
+/* USUARIO */
 #usuario-logueado {
     margin-left: auto;
     color: #f6b93b;
     font-weight: bold;
 }
 
+/* BOTÓN LOGIN / LOGOUT */
+#btn-auth a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+    background: #1e5f8a;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+#btn-auth a:hover {
+    background: #f6b93b;
+    color: #0a3d62;
+}
+
 /* BOTÓN SALIR */
 .menu a[onclick="logout()"] {
-    background: #e55039;
-    padding: 8px 12px;
-    border-radius: 6px;
+    background: #e55039 !important;
 }
 
 .menu a[onclick="logout()"]:hover {
-    background: #eb2f06;
+    background: #eb2f06 !important;
 }
 
 /* =========================
@@ -171,15 +187,6 @@ h2 {
     border-radius: 10px;
 }
 
-/* Ajuste visual */
-.card:nth-child(4) {
-    grid-column: 1 / 2;
-}
-
-.card:nth-child(5) {
-    grid-column: 3 / 4;
-}
-
 /* =========================
    DOCUMENTOS
 ========================= */
@@ -214,35 +221,6 @@ h2 {
 
 .btn-videos:hover {
     background: #f6b93b !important;
-}
-
-/* =========================
-   PDF Y VIDEOS
-========================= */
-.pdf-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.pdf-card {
-    width: 300px;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-}
-
-.btn-descarga {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 12px;
-    background: green;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
 }
 
 /* =========================
@@ -297,7 +275,11 @@ footer {
 
     .menu {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+    }
+
+    #usuario-logueado {
+        margin-left: 0;
     }
 
     header {
