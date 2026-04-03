@@ -16,13 +16,20 @@
 
   <button onclick="login()">Ingresar</button>
   <button onclick="registro()">Registrarse</button>
+  <button onclick="recuperar()">¿Olvidaste tu contraseña?</button>
 
   <p id="mensaje"></p>
 </div>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+  import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    sendPasswordResetEmail
+  } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
@@ -33,12 +40,21 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  // 🔐 LOGIN
   window.login = function(){
     const email = document.getElementById("correo").value;
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
+      .then((userCredential) => {
+
+        // 🔒 Verificar correo
+        if (!userCredential.user.emailVerified) {
+          document.getElementById("mensaje").innerText =
+            "⚠️ Debes verificar tu correo antes de ingresar";
+          return;
+        }
+
         window.location.href = "index.html";
       })
       .catch((error) => {
@@ -46,13 +62,39 @@
       });
   }
 
+  // 📝 REGISTRO
   window.registro = function(){
     const email = document.getElementById("correo").value;
     const password = document.getElementById("password").value;
 
     createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+
+        // 📧 Enviar verificación
+        sendEmailVerification(userCredential.user);
+
+        document.getElementById("mensaje").innerText =
+          "Usuario creado ✅. Revisa tu correo para verificar tu cuenta 📧";
+      })
+      .catch((error) => {
+        document.getElementById("mensaje").innerText = error.message;
+      });
+  }
+
+  // 🔑 RECUPERAR CONTRASEÑA
+  window.recuperar = function(){
+    const email = document.getElementById("correo").value;
+
+    if (!email) {
+      document.getElementById("mensaje").innerText =
+        "⚠️ Ingresa tu correo primero";
+      return;
+    }
+
+    sendPasswordResetEmail(auth, email)
       .then(() => {
-        document.getElementById("mensaje").innerText = "Usuario creado ✅";
+        document.getElementById("mensaje").innerText =
+          "📧 Correo de recuperación enviado";
       })
       .catch((error) => {
         document.getElementById("mensaje").innerText = error.message;
