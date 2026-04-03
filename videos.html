@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Videos Educativos</title>
     <link rel="stylesheet" href="estilos.css">
+
+    <!-- 🔒 PROTECCIÓN FIREBASE -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+        authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+        projectId: "mecatronica-agroindustrial-jjr",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          alert("🔒 Debes iniciar sesión para ver los videos");
+          window.location.href = "login.html";
+        }
+      });
+    </script>
 </head>
 
 <body>
@@ -57,31 +79,6 @@
 <footer>
     <p>© 2026 Institución Educativa - Mecatrónica Agroindustrial JUAN JACOBO ROUSSEAU</p>
 </footer>
-    <!-- contenido de videos aquí -->
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_DOMINIO",
-    projectId: "TU_PROYECTO",
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      alert("🔒 Debes iniciar sesión para ver los videos");
-      window.location.href = "login.html";
-    }
-  });
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
