@@ -38,24 +38,74 @@ body {
    HEADER
 ========================= */
 header {
-    background-color: #0a3d62;
+    background: linear-gradient(135deg, #0a3d62, #1e5f8a);
     color: white;
-    padding: 60px 20px 30px 20px;
+    padding: 70px 20px 40px 20px;
     position: relative;
 }
 
-/* LOGO */
 .logo {
     position: absolute;
     top: 20px;
     left: 20px;
     width: 130px;
-    height: auto;
 }
 
-/* TEXTO */
 .titulo {
     text-align: center;
+}
+
+/* =========================
+   PERFIL PROFESIONAL 🔥
+========================= */
+.perfil {
+    text-align: center;
+    margin: 60px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    width: 350px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
+    animation: aparecer 1s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 12px 30px rgba(0,0,0,0.3);
+}
+
+.foto-perfil {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #0a3d62;
+    margin-bottom: 10px;
+}
+
+.perfil h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #0a3d62;
+}
+
+.titulos {
+    font-size: 17px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* ANIMACIÓN */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* =========================
@@ -63,11 +113,6 @@ header {
 ========================= */
 h2 {
     margin-top: 40px;
-}
-
-.titulo-pagina {
-    margin: 25px;
-    font-size: 28px;
 }
 
 /* =========================
@@ -81,7 +126,6 @@ h2 {
     margin: 20px auto;
 }
 
-/* TARJETAS */
 .card {
     background: white;
     padding: 12px;
@@ -96,15 +140,7 @@ h2 {
     box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
 }
 
-/* IMÁGENES */
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-/* VIDEOS */
+.card img,
 .card video {
     width: 100%;
     height: 220px;
@@ -131,32 +167,7 @@ h2 {
     gap: 15px;
     margin: 20px;
 }
-/* PERFIL */
-.perfil {
-    text-align: center;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 320px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-}
 
-.foto-perfil {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.perfil h2 {
-    margin-top: 15px;
-}
-
-.titulos {
-    font-size: 16px;
-    color: #555;
-}
 .docs a {
     text-decoration: none;
     background: #0a3d62;
@@ -171,7 +182,7 @@ h2 {
     transform: scale(1.05);
 }
 
-/* BOTÓN VIDEOS DESTACADO */
+/* BOTÓN VIDEOS */
 .btn-videos {
     background: #e58e26 !important;
     font-weight: bold;
@@ -182,7 +193,7 @@ h2 {
 }
 
 /* =========================
-   PDF Y VIDEOS CARDS
+   PDF Y VIDEOS
 ========================= */
 .pdf-container {
     display: flex;
@@ -200,7 +211,6 @@ h2 {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
-/* BOTÓN DESCARGA */
 .btn-descarga {
     display: inline-block;
     margin-top: 10px;
@@ -253,7 +263,7 @@ footer {
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE 📱
 ========================= */
 @media (max-width: 768px) {
 
@@ -272,5 +282,9 @@ footer {
 
     .logo {
         width: 90px;
+    }
+
+    .perfil {
+        width: 90%;
     }
 }
