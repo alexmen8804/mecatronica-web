@@ -24,26 +24,26 @@ body {
     text-decoration: underline;
 }
 
-/* HEADER CON LOGO */
+/* HEADER */
 header {
     background-color: #0a3d62;
     color: white;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 15px;
+    padding: 50px 20px 20px 20px;
+    position: relative; /* IMPORTANTE */
 }
 
-/* LOGO */
+/* LOGO ARRIBA IZQUIERDA */
 .logo {
-    width: 80px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
     height: auto;
 }
 
-/* TEXTO DEL HEADER */
+/* TEXTO */
 .titulo {
-    text-align: left;
+    text-align: center;
 }
 
 /* TÍTULOS */
@@ -130,12 +130,7 @@ h2 {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
-.pdf-card iframe,
-.pdf-card video {
-    border-radius: 10px;
-}
-
-/* BOTONES DESCARGA */
+/* BOTONES */
 .btn-descarga {
     display: inline-block;
     margin-top: 10px;
@@ -144,11 +139,6 @@ h2 {
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn-descarga:hover {
-    background: darkgreen;
 }
 
 /* FORMULARIO */
@@ -189,21 +179,11 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .pdf-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
     .menu {
         flex-direction: column;
     }
 
     header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .titulo {
-        text-align: center;
+        padding-top: 80px;
     }
 }
