@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="estilos.css">
 
     <!-- 🔒 PROTECCIÓN FIREBASE -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+   <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
-        authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
-        projectId: "mecatronica-agroindustrial-jjr",
-      };
+  const firebaseConfig = {
+    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+    authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+    projectId: "mecatronica-agroindustrial-jjr",
+  };
 
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-      onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          alert("🔒 Debes iniciar sesión para ver los videos");
-          window.location.href = "login.html";
-        }
-      });
-    </script>
+  onAuthStateChanged(auth, (user) => {
+    if (!user || !user.emailVerified) {
+      alert("🔒 Debes iniciar sesión y verificar tu correo");
+      window.location.href = "login.html";
+    }
+  });
+</script>
 </head>
 
 <body>
