@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+body {
+    font-family: Arial;
+    background: #0a3d62;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+}
+
+button {
+    background: #0a3d62;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+<h2>Iniciar Sesión</h2>
+
+<input type="email" id="correo" placeholder="Correo">
+<input type="password" id="password" placeholder="Contraseña">
+
+<button onclick="login()">Ingresar</button>
+
+<p><a href="registro.html">Crear cuenta</a></p>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+  authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.login = function(){
+  let correo = document.getElementById("correo").value;
+  let pass = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, correo, pass)
+    .then(() => {
+      window.location.href = "index.html";
+    })
+    .catch(() => {
+      alert("Datos incorrectos");
+    });
+}
+</script>
+
+</body>
+</html>
