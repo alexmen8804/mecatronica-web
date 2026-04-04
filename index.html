@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mecatrónica Agroindustrial JUAN JACOBO ROUSSEAU</title>
     <link rel="stylesheet" href="estilos.css">
-
-    <!-- ⚡ Evitar parpadeo -->
-    <style>
-        body {
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -89,7 +82,7 @@
     <a href="Documentos/datos.xlsx">📊 Ver datos Excel</a>
     <a href="pdfs.html" target="_blank">📘 Ver Manuales PDF</a>
     <a href="Documentos/presentacion.pptx">📊 Ver Presentación</a>
-    <a href="videos.html" target="_blank">🎬 Ver Videos</a>
+    <a href="videos.html" target="_blank" class="btn-videos">🎬 Ver Videos</a>
 </div>
 
 <!-- CONTACTO -->
@@ -121,31 +114,25 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // ✅ Esperar a que cargue todo el HTML
-  window.addEventListener("DOMContentLoaded", () => {
+  const usuarioTexto = document.getElementById("usuario-logueado");
+  const btnAuth = document.getElementById("btn-auth");
+  const docs = document.querySelector(".docs");
 
-    const usuarioTexto = document.getElementById("usuario-logueado");
-    const btnAuth = document.getElementById("btn-auth");
-    const docs = document.querySelector(".docs");
+  // 🔐 Estado de sesión
+  onAuthStateChanged(auth, (user) => {
 
-    onAuthStateChanged(auth, (user) => {
+    if (user && user.emailVerified) {
+      usuarioTexto.innerHTML = "👤 " + user.email;
+      btnAuth.innerHTML = '<a href="#" class="btn-logout" onclick="logout(); return false;">Cerrar sesión</a>';
 
-      if (user && user.emailVerified) {
-        usuarioTexto.innerHTML = "👤 " + user.email;
-        btnAuth.innerHTML = '<a href="#" onclick="logout()">Cerrar sesión</a>';
+      if (docs) docs.style.display = "block";
 
-        if (docs) docs.style.display = "block";
+    } else {
+      usuarioTexto.innerHTML = "Invitado";
+      btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
 
-      } else {
-        usuarioTexto.innerHTML = "Invitado";
-        btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
-
-        if (docs) docs.style.display = "none";
-      }
-
-      // 🔥 Mostrar página SIEMPRE
-      document.body.style.display = "block";
-    });
+      if (docs) docs.style.display = "none";
+    }
 
   });
 
