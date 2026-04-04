@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="estilos.css">
 </head>
 
-<body>
+<body class="login">
 
 <div class="perfil">
   <h2>Iniciar Sesión</h2>
@@ -40,6 +40,11 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  // 🔥 MOSTRAR PÁGINA (SOLUCIÓN CLAVE)
+  window.addEventListener("DOMContentLoaded", () => {
+    document.body.style.opacity = "1";
+  });
+
   // 🔐 LOGIN
   window.login = function(){
     const email = document.getElementById("correo").value;
@@ -48,7 +53,6 @@
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
-        // 🔒 Verificar correo
         if (!userCredential.user.emailVerified) {
           document.getElementById("mensaje").innerText =
             "⚠️ Debes verificar tu correo antes de ingresar";
@@ -58,7 +62,7 @@
         window.location.href = "index.html";
       })
       .catch((error) => {
-        document.getElementById("mensaje").innerText = error.message;
+        document.getElementById("mensaje").innerText = traducirError(error.message);
       });
   }
 
@@ -70,18 +74,17 @@
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
-        // 📧 Enviar verificación
         sendEmailVerification(userCredential.user);
 
         document.getElementById("mensaje").innerText =
-          "Usuario creado ✅. Revisa tu correo para verificar tu cuenta 📧";
+          "Usuario creado ✅. Revisa tu correo 📧";
       })
       .catch((error) => {
-        document.getElementById("mensaje").innerText = error.message;
+        document.getElementById("mensaje").innerText = traducirError(error.message);
       });
   }
 
-  // 🔑 RECUPERAR CONTRASEÑA
+  // 🔑 RECUPERAR
   window.recuperar = function(){
     const email = document.getElementById("correo").value;
 
@@ -94,12 +97,23 @@
     sendPasswordResetEmail(auth, email)
       .then(() => {
         document.getElementById("mensaje").innerText =
-          "📧 Correo de recuperación enviado";
+          "📧 Correo enviado correctamente";
       })
       .catch((error) => {
-        document.getElementById("mensaje").innerText = error.message;
+        document.getElementById("mensaje").innerText = traducirError(error.message);
       });
   }
+
+  // 🔥 TRADUCIR ERRORES (MEJORA PRO)
+  function traducirError(error) {
+    if (error.includes("auth/invalid-email")) return "Correo inválido";
+    if (error.includes("auth/user-not-found")) return "Usuario no registrado";
+    if (error.includes("auth/wrong-password")) return "Contraseña incorrecta";
+    if (error.includes("auth/email-already-in-use")) return "El correo ya existe";
+    if (error.includes("auth/weak-password")) return "Contraseña muy débil (mínimo 6 caracteres)";
+    return error;
+  }
+
 </script>
 
 </body>
