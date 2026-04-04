@@ -6,7 +6,15 @@ body {
     text-align: center;
     background-color: #f4f4f4;
     margin: 0;
-    display: none; /* ⚡ evita parpadeo */
+
+    /* 🔥 Animación segura */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* 🔥 Evita desbordes raros */
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -64,11 +72,11 @@ html {
 }
 
 /* BOTÓN SALIR */
-.menu a[onclick="logout()"] {
+.btn-logout {
     background: #e55039 !important;
 }
 
-.menu a[onclick="logout()"]:hover {
+.btn-logout:hover {
     background: #eb2f06 !important;
 }
 
@@ -86,11 +94,13 @@ header {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 140px; /* 🔥 un poco más grande */
+    width: 140px;
 }
 
+/* 🔥 Evita que el texto se monte con el logo */
 .titulo {
     text-align: center;
+    padding-top: 20px;
 }
 
 /* =========================
@@ -103,6 +113,7 @@ header {
     padding: 35px;
     border-radius: 20px;
     width: 350px;
+    max-width: 90%; /* 🔥 responsive mejorado */
     box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
     animation: aparecer 1s ease-in-out;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -164,6 +175,7 @@ h2 {
     gap: 25px;
     max-width: 1000px;
     margin: 20px auto;
+    padding: 0 10px; /* 🔥 evita que toque bordes */
 }
 
 .card {
@@ -231,6 +243,7 @@ h2 {
     display: flex;
     flex-direction: column;
     width: 300px;
+    max-width: 90%;
     margin: auto;
     gap: 10px;
 }
