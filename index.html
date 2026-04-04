@@ -121,28 +121,35 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  const usuarioTexto = document.getElementById("usuario-logueado");
-  const btnAuth = document.getElementById("btn-auth");
-  const docs = document.querySelector(".docs");
+  // ✅ Esperar a que cargue todo el HTML
+  window.addEventListener("DOMContentLoaded", () => {
 
-  onAuthStateChanged(auth, (user) => {
-    if (user && user.emailVerified) {
-      usuarioTexto.innerHTML = "👤 " + user.email;
-      btnAuth.innerHTML = '<a href="#" onclick="logout()">Cerrar sesión</a>';
+    const usuarioTexto = document.getElementById("usuario-logueado");
+    const btnAuth = document.getElementById("btn-auth");
+    const docs = document.querySelector(".docs");
 
-      docs.style.display = "block";
+    onAuthStateChanged(auth, (user) => {
 
-    } else {
-      usuarioTexto.innerHTML = "Invitado";
-      btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
+      if (user && user.emailVerified) {
+        usuarioTexto.innerHTML = "👤 " + user.email;
+        btnAuth.innerHTML = '<a href="#" onclick="logout()">Cerrar sesión</a>';
 
-      docs.style.display = "none";
-    }
+        if (docs) docs.style.display = "block";
 
-    // ⚡ Mostrar página
-    document.body.style.display = "block";
+      } else {
+        usuarioTexto.innerHTML = "Invitado";
+        btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
+
+        if (docs) docs.style.display = "none";
+      }
+
+      // 🔥 Mostrar página SIEMPRE
+      document.body.style.display = "block";
+    });
+
   });
 
+  // 🔓 Cerrar sesión
   window.logout = function(){
     signOut(auth).then(() => {
       location.reload();
@@ -152,4 +159,3 @@
 
 </body>
 </html>
-
