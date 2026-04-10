@@ -12,7 +12,7 @@
       import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+        apiKey: "TU_API_KEY",
         authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
         projectId: "mecatronica-agroindustrial-jjr",
       };
@@ -26,10 +26,7 @@
           window.location.href = "login.html";
         } else {
           document.body.style.display = "block";
-
-          // 👤 Mostrar usuario
-          document.getElementById("usuario").innerText =
-            "👤 " + user.email;
+          document.getElementById("usuario").innerText = "👤 " + user.email;
         }
       });
     </script>
@@ -38,11 +35,50 @@
     <style>
         body {
             display: none;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .menu {
+            background: #222;
+            padding: 10px;
+        }
+
+        .menu a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .titulo-pagina {
+            margin-top: 20px;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
         }
 
         video {
             width: 100%;
             border-radius: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: #222;
+            color: white;
         }
     </style>
 </head>
@@ -61,7 +97,7 @@
 <p id="usuario" style="margin-top:10px;"></p>
 
 <!-- TÍTULO -->
-<h1 class="titulo-pagina">🎬 Videos Educativos</h1>
+<h1 class="titulo-pagina">🎬 Videos Educativos - Año 2026</h1>
 
 <!-- CONTENEDOR -->
 <div class="galeria">
@@ -70,7 +106,7 @@
     <div class="card">
         <h3>PLC Básico</h3>
         <video controls>
-            <source src="Videos/plc1.mp4" type="video/mp4">
+            <source src="Videos/anio-2026/plc1.mp4" type="video/mp4">
             Tu navegador no soporta video.
         </video>
         <p>Introducción al controlador lógico programable.</p>
@@ -80,7 +116,7 @@
     <div class="card">
         <h3>Automatización Industrial</h3>
         <video controls>
-            <source src="Videos/plc2.mp4" type="video/mp4">
+            <source src="Videos/anio-2026/plc2.mp4" type="video/mp4">
         </video>
         <p>Uso del PLC en procesos automáticos.</p>
     </div>
@@ -89,7 +125,7 @@
     <div class="card">
         <h3>Control de Motores</h3>
         <video controls>
-            <source src="Videos/plc3.mp4" type="video/mp4">
+            <source src="Videos/anio-2026/plc3.mp4" type="video/mp4">
         </video>
         <p>Aplicación en sistemas eléctricos industriales.</p>
     </div>
