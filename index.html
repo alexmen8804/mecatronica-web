@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mecatrónica Agroindustrial JUAN JACOBO ROUSSEAU</title>
     <link rel="stylesheet" href="estilos.css">
+
+    <!-- ⚡ Evitar parpadeo -->
+    <style>
+        body {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,7 +84,7 @@
 <!-- DOCUMENTOS -->
 <h2 id="documentos">Documentos</h2>
 
-<div class="docs">
+<div class="docs" id="docs">
     <a href="Documentos/informe.docx">📄 Descargar informe</a>
     <a href="Documentos/datos.xlsx">📊 Ver datos Excel</a>
     <a href="pdfs.html" target="_blank">📘 Ver Manuales PDF</a>
@@ -106,7 +113,7 @@
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+    apiKey: "TU_API_KEY",
     authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
     projectId: "mecatronica-agroindustrial-jjr",
   };
@@ -116,28 +123,26 @@
 
   const usuarioTexto = document.getElementById("usuario-logueado");
   const btnAuth = document.getElementById("btn-auth");
-  const docs = document.querySelector(".docs");
+  const docs = document.getElementById("docs");
 
-  // 🔐 Estado de sesión
   onAuthStateChanged(auth, (user) => {
 
     if (user && user.emailVerified) {
       usuarioTexto.innerHTML = "👤 " + user.email;
-      btnAuth.innerHTML = '<a href="#" class="btn-logout" onclick="logout(); return false;">Cerrar sesión</a>';
+      btnAuth.innerHTML = '<a href="#" onclick="logout(); return false;">Cerrar sesión</a>';
 
-      if (docs) docs.style.display = "block";
+      docs.style.display = "block";
 
     } else {
       usuarioTexto.innerHTML = "Invitado";
       btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
 
-      if (docs) docs.style.display = "none";
+      docs.style.display = "none";
     }
 
+    // Mostrar contenido
+    document.body.style.display = "block";
   });
-    <script>
-document.body.style.opacity = "1";
-</script>
 
   // 🔓 Cerrar sesión
   window.logout = function(){
