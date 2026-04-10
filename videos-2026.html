@@ -2,32 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Videos 2026</title>
+<link rel="stylesheet" href="estilos.css">
 
 <style>
-body {
-    font-family: Arial;
-    text-align: center;
-}
-
-.galeria {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.card {
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-video {
-    width: 100%;
-    border-radius: 10px;
-}
+body { display: none; }
 </style>
+
 </head>
 
 <body>
@@ -58,6 +40,31 @@ video {
     </div>
 
 </div>
+
+<!-- 🔐 FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+  projectId: "mecatronica-agroindustrial-jjr",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (!user || !user.emailVerified) {
+    alert("🔒 Debes iniciar sesión");
+    window.location.href = "login.html";
+  } else {
+    document.body.style.display = "block";
+    document.body.style.opacity = "1";
+  }
+});
+</script>
 
 </body>
 </html>
