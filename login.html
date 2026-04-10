@@ -40,8 +40,9 @@
     browserLocalPersistence
   } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
+  // 🔥 CONFIGURACIÓN REAL (CORREGIDA)
   const firebaseConfig = {
-    apiKey: "TU_API_KEY",
+    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
     authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
     projectId: "mecatronica-agroindustrial-jjr",
   };
@@ -49,12 +50,12 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // 🔥 Mostrar página suave
+  // Mostrar suave
   window.addEventListener("DOMContentLoaded", () => {
     document.body.style.opacity = "1";
   });
 
-  // 🔐 LOGIN (ARREGLADO)
+  // 🔐 LOGIN (CON PERSISTENCIA)
   window.login = function(){
     const email = document.getElementById("correo").value;
     const password = document.getElementById("password").value;
@@ -64,7 +65,6 @@
       return;
     }
 
-    // 🔥 CLAVE: guardar sesión
     setPersistence(auth, browserLocalPersistence)
       .then(() => {
         return signInWithEmailAndPassword(auth, email, password);
@@ -110,7 +110,7 @@
       });
   }
 
-  // 🔑 RECUPERAR
+  // 🔑 RECUPERAR CONTRASEÑA
   window.recuperar = function(){
     const email = document.getElementById("correo").value;
 
@@ -130,7 +130,7 @@
       });
   }
 
-  // 🔥 TRADUCTOR DE ERRORES
+  // 🔥 TRADUCIR ERRORES
   function traducirError(error) {
     if (error.includes("auth/invalid-email")) return "Correo inválido";
     if (error.includes("auth/user-not-found")) return "Usuario no registrado";
