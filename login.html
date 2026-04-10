@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="estilos.css">
+
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  </style>
 </head>
 
 <body class="login">
@@ -28,11 +35,13 @@
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword,
     sendEmailVerification,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    setPersistence,
+    browserLocalPersistence
   } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAltIMm4o9mDaMgUIDqeJzXF2utiZKvR10",
+    apiKey: "TU_API_KEY",
     authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
     projectId: "mecatronica-agroindustrial-jjr",
   };
@@ -40,17 +49,26 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // 🔥 MOSTRAR PÁGINA (SOLUCIÓN CLAVE)
+  // 🔥 Mostrar página suave
   window.addEventListener("DOMContentLoaded", () => {
     document.body.style.opacity = "1";
   });
 
-  // 🔐 LOGIN
+  // 🔐 LOGIN (ARREGLADO)
   window.login = function(){
     const email = document.getElementById("correo").value;
     const password = document.getElementById("password").value;
 
-    signInWithEmailAndPassword(auth, email, password)
+    if (!email || !password) {
+      document.getElementById("mensaje").innerText = "⚠️ Completa todos los campos";
+      return;
+    }
+
+    // 🔥 CLAVE: guardar sesión
+    setPersistence(auth, browserLocalPersistence)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, email, password);
+      })
       .then((userCredential) => {
 
         if (!userCredential.user.emailVerified) {
@@ -59,7 +77,10 @@
           return;
         }
 
-        window.location.href = "index.html";
+        document.getElementById("mensaje").innerText = "✅ Bienvenido";
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
       })
       .catch((error) => {
         document.getElementById("mensaje").innerText = traducirError(error.message);
@@ -71,13 +92,18 @@
     const email = document.getElementById("correo").value;
     const password = document.getElementById("password").value;
 
+    if (!email || !password) {
+      document.getElementById("mensaje").innerText = "⚠️ Completa todos los campos";
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
         sendEmailVerification(userCredential.user);
 
         document.getElementById("mensaje").innerText =
-          "Usuario creado ✅. Revisa tu correo 📧";
+          "✅ Usuario creado. Revisa tu correo 📧 y verifica tu cuenta";
       })
       .catch((error) => {
         document.getElementById("mensaje").innerText = traducirError(error.message);
@@ -104,7 +130,7 @@
       });
   }
 
-  // 🔥 TRADUCIR ERRORES (MEJORA PRO)
+  // 🔥 TRADUCTOR DE ERRORES
   function traducirError(error) {
     if (error.includes("auth/invalid-email")) return "Correo inválido";
     if (error.includes("auth/user-not-found")) return "Usuario no registrado";
