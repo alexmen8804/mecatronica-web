@@ -10,6 +10,7 @@
     <style>
         body {
             display: none;
+            opacity: 0;
         }
     </style>
 </head>
@@ -109,50 +110,52 @@
 
 <!-- 🔐 FIREBASE -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
-    projectId: "mecatronica-agroindustrial-jjr",
-  };
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+  projectId: "mecatronica-agroindustrial-jjr",
+};
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-  const usuarioTexto = document.getElementById("usuario-logueado");
-  const btnAuth = document.getElementById("btn-auth");
-  const docs = document.getElementById("docs");
+// 🔥 Mantener sesión activa SIEMPRE
+setPersistence(auth, browserLocalPersistence);
 
-  onAuthStateChanged(auth, (user) => {
+const usuarioTexto = document.getElementById("usuario-logueado");
+const btnAuth = document.getElementById("btn-auth");
+const docs = document.getElementById("docs");
 
-    if (user && user.emailVerified) {
-      usuarioTexto.innerHTML = "👤 " + user.email;
-      btnAuth.innerHTML = '<a href="#" class="btn-logout" onclick="logout(); return false;">Cerrar sesión</a>';
+onAuthStateChanged(auth, (user) => {
 
-      docs.style.display = "block";
+  console.log("Usuario detectado:", user);
 
-    } else {
-      usuarioTexto.innerHTML = "Invitado";
-      btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
-
-      docs.style.display = "none";
-    }
-
-    // 🔥 Mostrar página con animación
-    document.body.style.display = "block";
-    setTimeout(() => {
-        document.body.style.opacity = "1";
-    }, 100);
-  });
-
-  // 🔓 Cerrar sesión
-  window.logout = function(){
-    signOut(auth).then(() => {
-      location.reload();
-    });
+  if (user) {
+    usuarioTexto.innerHTML = "👤 " + user.email;
+    btnAuth.innerHTML = '<a href="#" class="btn-logout" onclick="logout(); return false;">Cerrar sesión</a>';
+    docs.style.display = "block";
+  } else {
+    usuarioTexto.innerHTML = "Invitado";
+    btnAuth.innerHTML = '<a href="login.html">Iniciar sesión</a>';
+    docs.style.display = "none";
   }
+
+  // Mostrar con animación
+  document.body.style.display = "block";
+  setTimeout(() => {
+      document.body.style.opacity = "1";
+  }, 100);
+});
+
+// 🔓 Logout
+window.logout = function(){
+  signOut(auth).then(() => {
+    location.reload();
+  });
+}
 </script>
 
 </body>
