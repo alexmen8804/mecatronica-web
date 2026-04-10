@@ -129,7 +129,7 @@
 
     if (user && user.emailVerified) {
       usuarioTexto.innerHTML = "👤 " + user.email;
-      btnAuth.innerHTML = '<a href="#" onclick="logout(); return false;">Cerrar sesión</a>';
+      btnAuth.innerHTML = '<a href="#" class="btn-logout" onclick="logout(); return false;">Cerrar sesión</a>';
 
       docs.style.display = "block";
 
@@ -140,8 +140,11 @@
       docs.style.display = "none";
     }
 
-    // Mostrar contenido
+    // 🔥 Mostrar página con animación
     document.body.style.display = "block";
+    setTimeout(() => {
+        document.body.style.opacity = "1";
+    }, 100);
   });
 
   // 🔓 Cerrar sesión
