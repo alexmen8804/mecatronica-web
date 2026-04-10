@@ -7,12 +7,12 @@ body {
     background-color: #f4f4f4;
     margin: 0;
 
-    /* 🔥 Animación segura */
-    opacity: 1;
+    /* 🔥 Animación mejorada */
+    opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-/* 🔥 Evita desbordes raros */
+/* 🔥 Evita errores de tamaño */
 * {
     box-sizing: border-box;
 }
@@ -97,7 +97,7 @@ header {
     width: 140px;
 }
 
-/* 🔥 Evita que el texto se monte con el logo */
+/* Ajuste del título */
 .titulo {
     text-align: center;
     padding-top: 20px;
@@ -113,7 +113,7 @@ header {
     padding: 35px;
     border-radius: 20px;
     width: 350px;
-    max-width: 90%; /* 🔥 responsive mejorado */
+    max-width: 90%;
     box-shadow: 0px 8px 25px rgba(0,0,0,0.2);
     animation: aparecer 1s ease-in-out;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -175,7 +175,7 @@ h2 {
     gap: 25px;
     max-width: 1000px;
     margin: 20px auto;
-    padding: 0 10px; /* 🔥 evita que toque bordes */
+    padding: 0 10px;
 }
 
 .card {
@@ -192,12 +192,21 @@ h2 {
     box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
 }
 
+.card h3 {
+    color: #0a3d62;
+    margin-bottom: 10px;
+}
+
 .card img,
 .card video {
     width: 100%;
     height: 220px;
     object-fit: cover;
     border-radius: 10px;
+}
+
+video {
+    background: black;
 }
 
 /* =========================
@@ -234,6 +243,28 @@ h2 {
 
 .btn-videos:hover {
     background: #f6b93b !important;
+}
+
+/* =========================
+   CARPETAS (VIDEOS POR AÑO)
+========================= */
+.carpeta {
+    display: inline-block;
+    padding: 20px;
+    margin: 20px;
+    background: white;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #0a3d62;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.carpeta:hover {
+    background: #f6b93b;
+    transform: scale(1.05);
 }
 
 /* =========================
@@ -306,5 +337,19 @@ footer {
 
     .perfil {
         width: 90%;
+    }
+}
+
+/* 🔥 EXTRA PARA CELULARES */
+@media (max-width: 500px) {
+
+    .logo {
+        position: static;
+        display: block;
+        margin: auto;
+    }
+
+    .titulo {
+        padding-top: 10px;
     }
 }
