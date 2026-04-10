@@ -1,141 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videos Educativos</title>
-    <link rel="stylesheet" href="estilos.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Videos</title>
+<link rel="stylesheet" href="estilos.css">
 
-    <!-- 🔒 PROTECCIÓN FIREBASE -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+<style>
+body { display: none; }
+</style>
 
-      const firebaseConfig = {
-        apiKey: "TU_API_KEY",
-        authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
-        projectId: "mecatronica-agroindustrial-jjr",
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-
-      onAuthStateChanged(auth, (user) => {
-        if (!user || !user.emailVerified) {
-          alert("🔒 Debes iniciar sesión y verificar tu correo");
-          window.location.href = "login.html";
-        } else {
-          document.body.style.display = "block";
-          document.getElementById("usuario").innerText = "👤 " + user.email;
-        }
-      });
-    </script>
-
-    <!-- ⚡ Evitar parpadeo -->
-    <style>
-        body {
-            display: none;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        .menu {
-            background: #222;
-            padding: 10px;
-        }
-
-        .menu a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .titulo-pagina {
-            margin-top: 20px;
-        }
-
-        .galeria {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .card {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-        }
-
-        video {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-            background: #222;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
 
-<!-- MENÚ -->
-<nav class="menu">
-    <a href="index.html">Inicio</a>
-    <a href="index.html#galeria">Galería</a>
-    <a href="index.html#documentos">Documentos</a>
-    <a href="index.html#contacto">Contacto</a>
-</nav>
+<h1>📂 Selecciona un Año</h1>
 
-<!-- 👤 USUARIO -->
-<p id="usuario" style="margin-top:10px;"></p>
-
-<!-- TÍTULO -->
-<h1 class="titulo-pagina">🎬 Videos Educativos - Año 2026</h1>
-
-<!-- CONTENEDOR -->
-<div class="galeria">
-
-    <!-- VIDEO 1 -->
-    <div class="card">
-        <h3>PLC Básico</h3>
-        <video controls>
-            <source src="Videos/anio-2026/plc1.mp4" type="video/mp4">
-            Tu navegador no soporta video.
-        </video>
-        <p>Introducción al controlador lógico programable.</p>
-    </div>
-
-    <!-- VIDEO 2 -->
-    <div class="card">
-        <h3>Automatización Industrial</h3>
-        <video controls>
-            <source src="Videos/anio-2026/plc2.mp4" type="video/mp4">
-        </video>
-        <p>Uso del PLC en procesos automáticos.</p>
-    </div>
-
-    <!-- VIDEO 3 -->
-    <div class="card">
-        <h3>Control de Motores</h3>
-        <video controls>
-            <source src="Videos/anio-2026/plc3.mp4" type="video/mp4">
-        </video>
-        <p>Aplicación en sistemas eléctricos industriales.</p>
-    </div>
-
+<div>
+    <a href="videos-2026.html" class="carpeta">📁 Año 2026</a>
+    <a href="videos-2025.html" class="carpeta">📁 Año 2025</a>
 </div>
 
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 Institución Educativa - Mecatrónica Agroindustrial JUAN JACOBO ROUSSEAU</p>
-</footer>
+<!-- 🔐 FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "mecatronica-agroindustrial-jjr.firebaseapp.com",
+  projectId: "mecatronica-agroindustrial-jjr",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (!user || !user.emailVerified) {
+    alert("🔒 Debes iniciar sesión");
+    window.location.href = "login.html";
+  } else {
+    document.body.style.display = "block";
+    document.body.style.opacity = "1";
+  }
+});
+</script>
 
 </body>
 </html>
